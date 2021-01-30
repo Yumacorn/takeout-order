@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: rgb(250, 208, 208);
   }
 
 p {
@@ -13,3 +13,17 @@ font-family: Verdana, Arial, sans-serif;
 .itemDescrip {
     font-size: small;
 }
+
+.sectionBorder {
+    padding: 1em;
+    /* padding-top : .25px; */
+    padding-bottom : 4em; 
+
+    border : 0.2em solid paleturquoise;
+    /* width  : 4em; */
+    height : 4em;
+    margin: 1em;
+}
+
+.groove {border-style: groove;}
+
