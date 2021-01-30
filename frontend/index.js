@@ -112,7 +112,6 @@ itemListBtn.addEventListener("click", function(e) {
         })
         .then(function(items){
             itemContainer.innerText = ''
-            debugger
             items.data.forEach(function(item) {
                 const newItem = document.createElement('p')
                 newItem.innerText = `${item.id}. ${item.attributes.name} // Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
