@@ -1,5 +1,8 @@
-const restaurantContainer = document.getQuerySelector('#restaurant-container')
+const restaurantContainer = document.querySelector('#restaurant-container')
+const restaurantListBtn = document.querySelector('#restaurant-list')
 
+
+console.log(restaurantListBtn)
 
 fetch('http://localhost:3000/restaurants')
     .then(function(response){
