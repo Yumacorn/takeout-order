@@ -7,12 +7,12 @@ newRestaurantForm.addEventListener("submit", function(e) {
     e.preventDefault()
     console.log(newRestaurantForm)
 
-    const input = newRestaurantForm.querySelector("#inputRestaurant")
+    const input = newRestaurantForm.querySelector("#inputRestaurant").value
     console.log(input)
     fetch('http://localhost:3000/restaurants', {
         method: "POST",
         headers: {
-            'Content-Type': 'application.json',
+            'Content-Type': 'application/json',
             Accept: 'application/json'
         },
         body: JSON.stringify({
