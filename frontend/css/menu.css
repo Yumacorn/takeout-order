@@ -15,10 +15,11 @@ font-family: Verdana, Arial, sans-serif;
 }
 
 .sectionBorder {
+    display: inline-block;
     padding: .5em;
     padding-top : .01em;
     padding-bottom : 5em; 
-
+    width: 95%;
     border : 0.4em solid crimson;
     height : 4em;
     margin: 1em;
@@ -35,6 +36,10 @@ font-family: Verdana, Arial, sans-serif;
     margin: .5em;
 }
 
+.remove-cart-item:hover {
+    background-color: #f70000;
+}
+
 .add-cart-item {
     color: black;
     background-color: turquoise;
@@ -42,5 +47,23 @@ font-family: Verdana, Arial, sans-serif;
     border-radius: .3em;
     font-weight: bold;
     margin: .5em;
+    float: right;
 }
 
+.add-cart-item:hover {
+    background-color: rgb(0, 255, 229);
+}
+
+.item-container {
+    border: solid 1px;
+  float: left;
+  width: 32%;
+  padding: 5px
+}
+
+.divider {
+    /* padding: 5px; */
+    display: inline-block;
+    margin: 10px;
+
+}

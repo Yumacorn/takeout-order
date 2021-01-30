@@ -120,11 +120,15 @@ itemListBtn.addEventListener("click", function(e) {
                 // newItem.innerText = `${item.id}. ${item.attributes.name} // Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
                 // itemContainer.appendChild(newItem)
                 const newItem = document.createElement('div')
+                newItem.className="item-container"
                 const newItemName = document.createElement('p')
                 newItemName.innerText = `${item.id}. ${item.attributes.name}`
+                newItemName.style="width: 300px; float:left"
 
-                const newItemDescrip = document.createElement('p.itemDescrip')
-                newItemDescrip.innerText = `// Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                const newItemDescrip = document.createElement('p')
+                newItemDescrip.className="itemDescrip"
+                newItemDescrip.innerText = `$${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                newItemDescrip.style="width: 200px; float:left"
 
                 const newItemAddCart = document.createElement('button')
                 newItemAddCart.className="add-cart-item"
