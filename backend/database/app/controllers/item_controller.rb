@@ -8,8 +8,9 @@ class ItemController < ApplicationController
     end
 
     def create
-        @item = Item.create(name: params[:name], price: params[:price], specialty: params[:specialty], restaurant_id: params[:restaurant_id])
-
+        byebug
+        @item = Item.create(name: params[:name], price: params[:price]), specialty: params[:specialty], restaurant_id: params[:restaurant_id])
+        byebug
         serialized_data = ItemSerializer.new(@item).serialized_json
         render json: serialized_data
     end
