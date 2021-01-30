@@ -26,16 +26,13 @@ newRestaurantForm.addEventListener("submit", function(e) {
     .then(function(restaurant){
             if (!restaurantContainer.classList.contains("isHidden")) {
                 const newRestaurant = document.createElement('p')
-                debugger
-                newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name}`
+                newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name} // Fastfood Spot: ${restaurant.data.attributes.fastfood ? 'Yes':'No'}`
                 restaurantContainer.appendChild(newRestaurant)
             }
     })
 })
 
 restaurantListBtn.addEventListener("click", function(e) {
-    console.log(e.target)
-    // debugger
     if (restaurantContainer.classList.contains("isHidden")) {
         restaurantListBtn.innerHTML = "Hide Restaurants"
         restaurantContainer.className = ""
@@ -45,18 +42,15 @@ restaurantListBtn.addEventListener("click", function(e) {
             return response.json()
         })
         .then(function(restaurants){
-            // restaurantContainer.innerHTML = restaurants.data[0].attributes.name
-            // console.log(restaurants.data[0].attributes.name)
             restaurantContainer.innerText = ''
 
             restaurants.data.forEach(function(restaurant) {
                 const newRestaurant = document.createElement('p')
-                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name}`
+                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'}`
                 restaurantContainer.appendChild(newRestaurant)
             })
         })
     } else {
-        // debugger
         restaurantListBtn.innerHTML = "Show Restaurants"
         restaurantContainer.className = "isHidden"
         restaurantContainer.innerText = ''
