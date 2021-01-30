@@ -88,22 +88,19 @@ newItemForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(item){
-        console.log(inputItemPrice.value)
-
             if (!itemContainer.classList.contains("isHidden")) {
                 const newItem = document.createElement('div')
                 const newItemName = document.createElement('p')
                 newItemName.innerText = `${item.data.id}. ${item.data.attributes.name}`
+                console.log(item)
 
                 const newItemDescrip = document.createElement('p')
-                newItemDescrip.innerText = `// Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                newItemDescrip.innerText = `// Price: ${parseFloat(item.data.attributes.price).toFixed(2)} Specialty: ${item.data.attributes.speciality ? 'Yes':'No'}`
                 newItem.appendChild(newItemName)
                 newItem.appendChild(newItemDescrip)
                 itemContainer.appendChild(newItem)
             }
-            console.log(inputItemPrice)
-            console.log(inputItemPrice.value)
-
+            console.log(item)
     })
 })
 
