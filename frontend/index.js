@@ -64,11 +64,12 @@ restaurantListBtn.addEventListener("click", function(e) {
 
 newItemForm.addEventListener("submit", function(e) {
     e.preventDefault()  
+    
     const inputItem= document.querySelector("#new-item-name").value
     const inputItemPrice= document.querySelector("#new-item-price").value
     const isSpecialty = document.querySelector("#new-item-specialty-bool")
-    const restId = document.querySelector("new-item-belong-to-rest").value
-
+    const restId = document.querySelector("#new-item-belong-to-rest").value
+    
     console.log(inputItemPrice)
     fetch('http://localhost:3000/items', {
         method: "POST",
@@ -98,8 +99,6 @@ newItemForm.addEventListener("submit", function(e) {
             console.log(inputItemPrice.value)
 
     })
-    // console.log(inputItemPrice.value)
-
 })
 
 itemListBtn.addEventListener("click", function(e) {
@@ -113,7 +112,7 @@ itemListBtn.addEventListener("click", function(e) {
         })
         .then(function(items){
             itemContainer.innerText = ''
-
+            debugger
             items.data.forEach(function(item) {
                 const newItem = document.createElement('p')
                 newItem.innerText = `${item.id}. ${item.attributes.name} // Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
