@@ -91,8 +91,14 @@ newItemForm.addEventListener("submit", function(e) {
         console.log(inputItemPrice.value)
 
             if (!itemContainer.classList.contains("isHidden")) {
-                const newItem = document.createElement('p')
-                newItem.innerText = `${item.data.id}. ${item.data.attributes.name} // Specialty: ${item.data.attributes.specialty ? 'Yes':'No'}`
+                const newItem = document.createElement('div')
+                const newItemName = document.createElement('p')
+                newItemName.innerText = `${item.data.id}. ${item.data.attributes.name}`
+
+                const newItemDescrip = document.createElement('p')
+                newItemDescrip.innerText = `// Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                newItem.appendChild(newItemName)
+                newItem.appendChild(newItemDescrip)
                 itemContainer.appendChild(newItem)
             }
             console.log(inputItemPrice)
@@ -113,8 +119,17 @@ itemListBtn.addEventListener("click", function(e) {
         .then(function(items){
             itemContainer.innerText = ''
             items.data.forEach(function(item) {
-                const newItem = document.createElement('p')
-                newItem.innerText = `${item.id}. ${item.attributes.name} // Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                // const newItem = document.createElement('p')
+                // newItem.innerText = `${item.id}. ${item.attributes.name} // Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                // itemContainer.appendChild(newItem)
+                const newItem = document.createElement('div')
+                const newItemName = document.createElement('p')
+                newItemName.innerText = `${item.id}. ${item.attributes.name}`
+
+                const newItemDescrip = document.createElement('p.itemDescrip')
+                newItemDescrip.innerText = `// Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                newItem.appendChild(newItemName)
+                newItem.appendChild(newItemDescrip)
                 itemContainer.appendChild(newItem)
             })
         })
