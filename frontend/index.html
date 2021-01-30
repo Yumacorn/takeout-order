@@ -9,15 +9,17 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <h1 style="text-align: center">Takeout Order</h1>
-        <p>This project will be so useful!</p>
+        <div style="text-align: center">
+            <h1>Takeout Order</h1>
+            <h4>Please browse the local restaurants and select an order for delivery!</h4>
+        </div>
         <label for="restaurant-container">Restaurant List</label>
         <button id="restaurant-list" type="button" name="button">Display all restaurants</button>
         <div id="restaurant-container" class="isHidden"></div>
 
         <div class="sectionBorder groove">
             <form id="new-restaurant-form" >
-                <h3 class="groove">Add New Restaurant!</h3>
+                <h3>Add New Restaurant!</h3>
                 <input id="new-rest-name" type="text" name="newRestName" value="" placeholder="Enter new restaurant"><br>
                 <label for="newRestFastfoodBool">Is this a Fastfood Restaurant?</label>
                 <input id="new-rest-fastfood-bool" type="checkbox" name="newRestFastfoodBool" value="" placeholder="Fastfood">
@@ -29,8 +31,8 @@
         <button id="item-list" type="button" name="button">Display all items</button>
         <div id="item-container" class="isHidden "></div>
 
-        <form id="new-item-form" class="">
-            <h3 class="groove">Add New Item!</h3>
+        <form id="new-item-form" class="sectionBorder groove">
+            <h3>Add New Item!</h3>
             <label for="newItemName">Name of Item: </label>
             <input id="new-item-name" type="text" name="newItemName" value="" placeholder="Enter new item"><br>
             <label for="newItemPrice">Price: </label>
