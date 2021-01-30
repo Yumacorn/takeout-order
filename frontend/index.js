@@ -24,7 +24,12 @@ newRestaurantForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(restaurant){
-        console.log(restaurant)
+            if (!restaurantContainer.classList.contains("isHidden")) {
+                const newRestaurant = document.createElement('p')
+                debugger
+                newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name}`
+                restaurantContainer.appendChild(newRestaurant)
+            }
     })
 })
 
@@ -46,7 +51,7 @@ restaurantListBtn.addEventListener("click", function(e) {
 
             restaurants.data.forEach(function(restaurant) {
                 const newRestaurant = document.createElement('p')
-                newRestaurant.innerText = restaurant.attributes.name
+                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name}`
                 restaurantContainer.appendChild(newRestaurant)
             })
         })
