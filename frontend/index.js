@@ -1,61 +1,60 @@
 const restaurantListBtn = document.querySelector('#restaurant-list')
 const newRestaurantForm = document.querySelector('#new-restaurant-form')
+const restaurantContainer = document.querySelector('#restaurant-container')
 
-console.log(newRestaurantForm)
+
 newRestaurantForm.addEventListener("submit", function(e) {
-    e.preventDefault()
-    console.log(e.target)
-    console.log("ji")
+    e.preventDefault()  
+    const inputRest = document.querySelector("#new-rest-name").value
+    const isFastfood = document.querySelector("#new-rest-fastfood-bool")
 
+    fetch('http://localhost:3000/restaurants', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        },
+        body: JSON.stringify({
+
+            name: inputRest,
+            fastfood: isFastfood.checked
+        })
+    })
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(restaurant){
+        console.log(restaurant)
+    })
 })
-console.log("xyz")
-
-console.log(newRestaurantForm)
-
-
-// newRestaurantForm.addEventListener("submit", function(e) {
-//     console.log(e.target)
-
-
-    // console.log(newRestaurantForm)
-
-    // const input = document.querySelector("#inputRestaurant").value
-    // console.log(input)
-    // fetch('http://localhost:3000/restaurants', {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         Accept: 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         name: input
-    //     })
-    // })
-    // .then(function(response) {
-    //     return response.json()
-    // })
-    // .then(function(restaurant){
-    //     console.log(restaurant)
-    // })
-// })
 
 restaurantListBtn.addEventListener("click", function(e) {
     console.log(e.target)
-    fetch('http://localhost:3000/restaurants')
-    .then(function(response){
-        return response.json()
-    })
-    .then(function(restaurants){
-        // restaurantContainer.innerHTML = restaurants.data[0].attributes.name
-        // console.log(restaurants.data[0].attributes.name)
-        const restaurantContainer = document.querySelector('#restaurant-container')
-        restaurantContainer.innerText = ''
+    // debugger
+    if (restaurantContainer.classList.contains("isHidden")) {
+        restaurantListBtn.innerHTML = "Hide Restaurants"
+        restaurantContainer.className = ""
 
-        restaurants.data.forEach(function(restaurant) {
-            const newRestaurant = document.createElement('p')
-            newRestaurant.innerText = restaurant.attributes.name
-            restaurantContainer.appendChild(newRestaurant)
+        fetch('http://localhost:3000/restaurants')
+        .then(function(response){
+            return response.json()
         })
-    })
+        .then(function(restaurants){
+            // restaurantContainer.innerHTML = restaurants.data[0].attributes.name
+            // console.log(restaurants.data[0].attributes.name)
+            restaurantContainer.innerText = ''
+
+            restaurants.data.forEach(function(restaurant) {
+                const newRestaurant = document.createElement('p')
+                newRestaurant.innerText = restaurant.attributes.name
+                restaurantContainer.appendChild(newRestaurant)
+            })
+        })
+    } else {
+        // debugger
+        restaurantListBtn.innerHTML = "Show Restaurants"
+        restaurantContainer.className = "isHidden"
+        restaurantContainer.innerText = ''
+    }
 })
 

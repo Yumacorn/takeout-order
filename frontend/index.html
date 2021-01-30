@@ -9,10 +9,13 @@
     <body>
         <p>This project will be so useful!</p>
         <button id="restaurant-list" type="button" name="button">Display all restaurants</button>
-        <div id="restaurant-container"">Restaurant List</div>
+        <div id="restaurant-container" class="isHidden">Restaurant List</div>
 
         <form id="new-restaurant-form" class="">
-            <input type="text" name="newEntry" value="" placeholder="Enter new restaurant">
+            <h3>Add New Restaurant!</h3>
+            <input id="new-rest-name" type="text" name="newRestName" value="" placeholder="Enter new restaurant"><br>
+            <label for="newRestFastfoodBool">Is this a Fastfood Restaurant?</label>
+            <input id="new-rest-fastfood-bool" type="checkbox" name="newRestFastfoodBool" value="" placeholder="Fastfood">
             <input type="submit" name="submit" value="Add Restaurant">
         </form>
     </body>

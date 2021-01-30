@@ -8,7 +8,7 @@ class RestaurantController < ApplicationController
 
     def create
         byebug
-        @restaurant = Restaurant.create(name: params[:name])
+        @restaurant = Restaurant.create(name: params[:name], fastfood: params[:fastfood])
 
         serialized_data = RestaurantSerializer.new(@restaurant).serialized_json
         render json: serialized_data
