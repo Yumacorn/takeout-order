@@ -128,8 +128,13 @@ itemListBtn.addEventListener("click", function(e) {
 
                 const newItemDescrip = document.createElement('p.itemDescrip')
                 newItemDescrip.innerText = `// Price: ${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+
+                const newItemAddCart = document.createElement('button')
+                newItemAddCart.className="add-cart-item"
+                newItemAddCart.innerText = 'Add To Cart'
                 newItem.appendChild(newItemName)
                 newItem.appendChild(newItemDescrip)
+                newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
             })
         })

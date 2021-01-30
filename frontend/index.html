@@ -7,6 +7,7 @@
         <title>Takeout Order Site</title>
 
         <script src="index.js" defer></script>
+        <script src="cart.js" defer></script>
     </head>
     <body>
         <div style="text-align: center">
@@ -46,10 +47,22 @@
             <input type="submit" name="submit" value="Add Item">
         </form>
 
-        <div id="takeoutOrder" class="">
-            <h3>Takeout Order</h3>
-            <p># of Items: </p>
-            <p>Total: </p>
+        <div id="takeoutOrder" class="groove">
+            <h3>Takeout Order Cart:</h3>
+            <div class="order-header-row'">
+                <span class="order-item cart-header cart-column">Item</span>
+                <span class="order-price cart-header cart-column">Price</span>
+                <span class="order-quantity cart-header cart-column">Quantity</span>
+            </div>
+            <div id="order-items">
+                <button class="remove-cart-item">X</button>
+            </div>
+            <div class="order-total">
+                <strong class="order-total-title">Total</strong>
+                <span class="order-total-price">$0.00</span>
+            </div>
+            <div># of Items: </div>
+            <div>Total: </div>
         </div>
     </body>
 </html>
