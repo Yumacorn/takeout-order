@@ -67,3 +67,20 @@ font-family: Verdana, Arial, sans-serif;
     margin: 10px;
 
 }
+
+.order-item {
+    color: purple;
+    margin-right: 20px;
+}
+
+.order-price {
+    color: green;
+    font-style: italic;
+}
+.cart-header {
+    font-weight: bold;
+    /* padding-right: 150px; */
+    margin-right: 150px;
+    width: 50%;
+    padding: 5px;
+}
