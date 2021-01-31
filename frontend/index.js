@@ -118,11 +118,12 @@ itemListBtn.addEventListener("click", function(e) {
         itemListBtn.innerHTML = "Hide Items"
         itemContainer.className = ""
 
-        fetch('http://localhost:3000/items')
+        fetch('http://localhost:3000/restaurants/1/items')
         .then(function(response){
             return response.json()
         })
         .then(function(items){
+            debugger
             itemContainer.innerText = ''
             items.data.forEach(function(item) {
                 // const newItem = document.createElement('p')
