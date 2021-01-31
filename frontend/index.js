@@ -211,6 +211,31 @@ function renderItems() {
                 newItem.appendChild(newItemDescrip)
                 newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
+
+                const removeButton = document.createElement('button')
+                removeButton.className = "remove-item"
+                removeButton.innerText = "X"
+                newItemAddCart.after(removeButton)
+                removeButton.addEventListener('click', function(event) {
+                    event.preventDefault()  
+                    let removeButton = event.target
+                    // debugger
+                    fetch(`http://localhost:3000/items/${item.id}`, {
+                        method: "DELETE",
+                        headers: { 
+                            'Content-type': 'application/json',
+                            Accept: 'application/json'
+                        } 
+                    })
+                    .then(function(response) {
+                        return response.json()
+                    })
+                    .then(function(items){
+                            removeButton.parentElement.remove()
+                            // renderRestaurants()
+                            // renderItems()
+                    })
+                })
             })
         })
 }

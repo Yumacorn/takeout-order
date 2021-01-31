@@ -47,6 +47,7 @@ font-family: Verdana, Arial, sans-serif;
     border-radius: .3em;
     font-weight: bold;
     margin: .5em;
+    float: right;
 }
 
 .remove-item:hover {
