@@ -26,12 +26,13 @@ function renderRestaurants() {
                     restaurantContainer.appendChild(newRestaurant)
                 })
             }
-            for (let i = selectedItemsRestId.options.length; i > 0; i--) {
+            for (let i = selectedItemsRestId.options.length; i >= 0; i--) {
                 console.log(selectedItemsRestId.options)
                 console.log(`On ${i.value}`)
                 selectedItemsRestId.remove(i)
                 newItemRestId.remove(i)
                 console.log(`removed ${i}`)
+                // debugger
 
             }
             restaurants.data.forEach(function(restaurant) {
@@ -133,6 +134,8 @@ newItemForm.addEventListener("submit", function(e) {
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
+                    alert(`Added (1) order of "${addItemToCart}"!`)
+                    addLineItem(addItemToCart, addItemPriceToCart, addItemRestIdToCart)
                 })
 
                 newItemAddCart.innerText = 'Add To Cart'
