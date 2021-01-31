@@ -50,7 +50,8 @@ restaurantListBtn.addEventListener("click", function(e) {
 
             restaurants.data.forEach(function(restaurant) {
                 const newRestaurant = document.createElement('p')
-                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'}`
+                debugger
+                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
                 restaurantContainer.appendChild(newRestaurant)
             })
         })
