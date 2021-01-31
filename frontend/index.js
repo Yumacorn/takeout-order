@@ -5,27 +5,54 @@ const restaurantContainer = document.querySelector('#restaurant-container')
 const itemListBtn = document.querySelector('#item-list')
 const newItemForm = document.querySelector('#new-item-form')
 const itemContainer = document.querySelector('#item-container')
+
+// let ds = document.querySelector("#dynamicSelector")
+// const newSelector = document.createElement('select')
+// newSelector.setAttribute("id", "display-items-belong-to-rest")
+// newSelector.setAttribute("name", "selectItemRestaurant")
+
 let selectedItemsRestId = document.querySelector('#display-items-belong-to-rest')
 
+
 function renderRestaurants() {
-    // debugger
-    if (!listHidden(restaurantContainer)) {
+    // if (!listHidden(restaurantContainer)) {
         fetch('http://localhost:3000/restaurants')
         .then(function(response){
             return response.json()
         })
         .then(function(restaurants){
-            restaurantContainer.innerText = ''
+            if (!listHidden(restaurantContainer)) {
+                restaurantContainer.innerText = ''
 
+                restaurants.data.forEach(function(restaurant) {
+                    const newRestaurant = document.createElement('p')
+                    newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
+                    restaurantContainer.appendChild(newRestaurant)
+                })
+            }
+            // ds.innerText = ''
+            // ds.appendChild(selectedItemsRestId)
+            // selectedItemsRestId.children.remove()
+            debugger
+            for (let i = selectedItemsRestId.options.length; i > 0; i--) {
+                console.log(selectedItemsRestId.options)
+                debugger
+                console.log(`On ${i.value}`)
+                selectedItemsRestId.remove(i)
+                console.log(`removed ${i}`)
+
+            }
+            // debugger
+            // ds<select id="display-items-belong-to-rest" name="selectItemRestaurant">
             restaurants.data.forEach(function(restaurant) {
-                const newRestaurant = document.createElement('p')
-                // debugger
-                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
-                restaurantContainer.appendChild(newRestaurant)
+                var option = document.createElement("option")
+                option.value = restaurant.id
+                option.text = restaurant.attributes.name
+                selectedItemsRestId.appendChild(option)
             })
         })
-    }
 }
+
 
 newRestaurantForm.addEventListener("submit", function(e) {
     e.preventDefault()  
@@ -48,11 +75,12 @@ newRestaurantForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(restaurant){
-            if (!restaurantContainer.classList.contains("isHidden")) {
-                const newRestaurant = document.createElement('p')
-                newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name} // Fastfood Spot: ${restaurant.data.attributes.fastfood ? 'Yes':'No'}`
-                restaurantContainer.appendChild(newRestaurant)
-            }
+            // if (!restaurantContainer.classList.contains("isHidden")) {
+            //     const newRestaurant = document.createElement('p')
+            //     newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name} // Fastfood Spot: ${restaurant.data.attributes.fastfood ? 'Yes':'No'}`
+            //     restaurantContainer.appendChild(newRestaurant)
+            // }
+            renderRestaurants()
     })
 })
 
@@ -181,6 +209,7 @@ function renderItems() {
         })
 }
 
+
 selectedItemsRestId.addEventListener("change", function(e) {
     console.log('You selected: ', this.value);
     if (!listHidden(itemContainer)) {
@@ -200,3 +229,4 @@ itemListBtn.addEventListener("click", function(e) {
     }
 })
 
+renderRestaurants()
