@@ -9,6 +9,7 @@ const itemContainer = document.querySelector('#item-container')
 let selectedItemsRestId = document.querySelector('#display-items-belong-to-rest')
 let newItemRestId = document.querySelector('#new-item-belong-to-rest')
 
+let removeItem = document.getElementsByClassName('remove-item')
 
 function renderRestaurants() {
         fetch('http://localhost:3000/restaurants')
@@ -139,6 +140,26 @@ newItemForm.addEventListener("submit", function(e) {
                 newItem.appendChild(newItemDescrip)
                 newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
+
+                const removeButton = document.createElement('button')
+                removeButton.className = "remove-item"
+                removeButton.innerText = "X"
+                newItem.appendChild(removeButton)
+                removeButton.addEventListener('click', function(event) {
+                    event.preventDefault()  
+                    let removeButton = event.target
+                    fetch(`http://localhost:3000/items/${item.data.id}`, {
+                        method: "DELETE",
+                    })
+                    .then(function(response) {
+                        return response.json()
+                    })
+                    .then(function(items){
+                            removeButton.parentElement.remove()
+                            renderRestaurants()
+                            renderItems()
+                    })
+                })
             }
             renderRestaurants()
 

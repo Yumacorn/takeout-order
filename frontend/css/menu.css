@@ -40,6 +40,19 @@ font-family: Verdana, Arial, sans-serif;
     background-color: #f70000;
 }
 
+.remove-item {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+    margin: .5em;
+}
+
+.remove-item:hover {
+    background-color: #f70000;
+}
+
 .add-cart-item {
     color: black;
     background-color: turquoise;
