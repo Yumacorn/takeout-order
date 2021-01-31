@@ -6,16 +6,10 @@ const itemListBtn = document.querySelector('#item-list')
 const newItemForm = document.querySelector('#new-item-form')
 const itemContainer = document.querySelector('#item-container')
 
-// let ds = document.querySelector("#dynamicSelector")
-// const newSelector = document.createElement('select')
-// newSelector.setAttribute("id", "display-items-belong-to-rest")
-// newSelector.setAttribute("name", "selectItemRestaurant")
-
 let selectedItemsRestId = document.querySelector('#display-items-belong-to-rest')
 
 
 function renderRestaurants() {
-    // if (!listHidden(restaurantContainer)) {
         fetch('http://localhost:3000/restaurants')
         .then(function(response){
             return response.json()
@@ -30,20 +24,13 @@ function renderRestaurants() {
                     restaurantContainer.appendChild(newRestaurant)
                 })
             }
-            // ds.innerText = ''
-            // ds.appendChild(selectedItemsRestId)
-            // selectedItemsRestId.children.remove()
-            debugger
             for (let i = selectedItemsRestId.options.length; i > 0; i--) {
                 console.log(selectedItemsRestId.options)
-                debugger
                 console.log(`On ${i.value}`)
                 selectedItemsRestId.remove(i)
                 console.log(`removed ${i}`)
 
             }
-            // debugger
-            // ds<select id="display-items-belong-to-rest" name="selectItemRestaurant">
             restaurants.data.forEach(function(restaurant) {
                 var option = document.createElement("option")
                 option.value = restaurant.id
@@ -75,11 +62,6 @@ newRestaurantForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(restaurant){
-            // if (!restaurantContainer.classList.contains("isHidden")) {
-            //     const newRestaurant = document.createElement('p')
-            //     newRestaurant.innerText = `${restaurant.data.id}. ${restaurant.data.attributes.name} // Fastfood Spot: ${restaurant.data.attributes.fastfood ? 'Yes':'No'}`
-            //     restaurantContainer.appendChild(newRestaurant)
-            // }
             renderRestaurants()
     })
 })
@@ -104,8 +86,7 @@ newItemForm.addEventListener("submit", function(e) {
     const inputItemPrice= document.querySelector("#new-item-price").value
     const isSpecialty = document.querySelector("#new-item-specialty-bool")
     const restId = document.querySelector("#new-item-belong-to-rest").value
-    // debugger
-    // console.log(inputItemPrice)
+
     fetch(`http://localhost:3000/restaurants/${restId}/items`, {
         method: "POST",
         headers: {
@@ -123,31 +104,27 @@ newItemForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(item){
-            // if (!itemContainer.classList.contains("isHidden")) {
             if (!listHidden(itemContainer)) {
                 const newItem = document.createElement('div')
                 newItem.className="item-container"
                 const newItemName = document.createElement('p')
                 newItemName.innerText = `${item.data.id}. ${item.data.attributes.name}`
                 newItemName.style="width: 300px; float:left"
-                console.log(item)
 
                 const newItemDescrip = document.createElement('p')
-                newItemDescrip.innerText = `// Price: ${parseFloat(item.data.attributes.price).toFixed(2)} Specialty: ${item.data.attributes.speciality ? 'Yes':'No'}`
+                newItemDescrip.innerText = `$${parseFloat(item.data.attributes.price).toFixed(2)} Specialty: ${item.data.attributes.speciality ? 'Yes':'No'} Restaurant: ${item.data.attributes.restaurant_id}`
                 newItemDescrip.style="width: 200px; float:left"
 
                 const newItemAddCart = document.createElement('button')
                 newItemAddCart.className="add-cart-item"
-                // newItemAddCart.addEventListener('click', function(event) {
-                //     let addButton = event.target.parentNode
-                //     console.log(addButton.parentElement.value)
-                // })
+
                 newItemAddCart.addEventListener('click', function(event) {
                     let addButton = event.target
                     console.log(addButton.parentElement)
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
+                    debugger
                 })
 
                 newItemAddCart.innerText = 'Add To Cart'
@@ -156,15 +133,8 @@ newItemForm.addEventListener("submit", function(e) {
                 newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
             }
-            console.log("victory")
-                renderRestaurants()
-            console.log(item)
     })
 })
-
-// function itemListHidden() {
-//     return (itemContainer.classList.contains("isHidden")) ? true : false
-// }
 
 function listHidden(container) {
     return (container.classList.contains("isHidden")) ? true : false
@@ -198,6 +168,7 @@ function renderItems() {
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
+                    // debugger
                 })
 
                 newItemAddCart.innerText = 'Add To Cart'

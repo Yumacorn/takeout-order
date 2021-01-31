@@ -1,7 +1,7 @@
-// let addCartItem = document.getElementsByClassName('add-cart-item')
+let addCartItem = document.getElementsByClassName('add-cart-item')
 let removeCartItem = document.getElementsByClassName('remove-cart-item')
 
-// console.log(addCartItem)
+console.log(addCartItem)
 // for (btn of addCartItem) {
 //     console.log(addCartItem)
 //     btn.addEventListener('click', function(event) {
