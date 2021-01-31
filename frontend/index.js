@@ -96,8 +96,17 @@ newItemForm.addEventListener("submit", function(e) {
 
                 const newItemDescrip = document.createElement('p')
                 newItemDescrip.innerText = `// Price: ${parseFloat(item.data.attributes.price).toFixed(2)} Specialty: ${item.data.attributes.speciality ? 'Yes':'No'}`
+
+                const newItemAddCart = document.createElement('button')
+                newItemAddCart.className="add-cart-item"
+                newItemAddCart.addEventListener('click', function(event) {
+                    // debugger
+                    let addButton = event.target.parentNode
+                    console.log(addButton.parentElement.value)
+                })
                 newItem.appendChild(newItemName)
                 newItem.appendChild(newItemDescrip)
+                newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
             }
             console.log(item)
@@ -127,11 +136,19 @@ itemListBtn.addEventListener("click", function(e) {
 
                 const newItemDescrip = document.createElement('p')
                 newItemDescrip.className="itemDescrip"
-                newItemDescrip.innerText = `$${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'}`
+                newItemDescrip.innerText = `$${parseFloat(item.attributes.price).toFixed(2)} Specialty: ${item.attributes.speciality ? 'Yes':'No'} Restaurant: ${item.attributes.restaurant_id}`
                 newItemDescrip.style="width: 200px; float:left"
 
                 const newItemAddCart = document.createElement('button')
                 newItemAddCart.className="add-cart-item"
+                newItemAddCart.addEventListener('click', function(event) {
+                    let addButton = event.target
+                    console.log(addButton.parentElement)
+                    addItemToCart = addButton.parentElement.children[0].innerText
+                    addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
+                    addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
+                })
+
                 newItemAddCart.innerText = 'Add To Cart'
                 newItem.appendChild(newItemName)
                 newItem.appendChild(newItemDescrip)
