@@ -117,13 +117,14 @@ itemListBtn.addEventListener("click", function(e) {
     if (itemContainer.classList.contains("isHidden")) {
         itemListBtn.innerHTML = "Hide Items"
         itemContainer.className = ""
-
-        fetch('http://localhost:3000/restaurants/1/items')
+        // let selectedRestId = 2
+        let selectedRestId = document.querySelector('#display-items-belong-to-rest').value
+        fetch(`http://localhost:3000/restaurants/${selectedRestId}/items`)
         .then(function(response){
             return response.json()
         })
         .then(function(items){
-            debugger
+            // debugger
             itemContainer.innerText = ''
             items.data.forEach(function(item) {
                 // const newItem = document.createElement('p')
