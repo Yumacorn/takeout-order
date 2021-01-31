@@ -7,6 +7,7 @@ const newItemForm = document.querySelector('#new-item-form')
 const itemContainer = document.querySelector('#item-container')
 
 let selectedItemsRestId = document.querySelector('#display-items-belong-to-rest')
+let newItemRestId = document.querySelector('#new-item-belong-to-rest')
 
 
 function renderRestaurants() {
@@ -28,6 +29,7 @@ function renderRestaurants() {
                 console.log(selectedItemsRestId.options)
                 console.log(`On ${i.value}`)
                 selectedItemsRestId.remove(i)
+                newItemRestId.remove(i)
                 console.log(`removed ${i}`)
 
             }
@@ -36,6 +38,10 @@ function renderRestaurants() {
                 option.value = restaurant.id
                 option.text = restaurant.attributes.name
                 selectedItemsRestId.appendChild(option)
+                var option2 = document.createElement("option")
+                option2.value = restaurant.id
+                option2.text = restaurant.attributes.name
+                newItemRestId.appendChild(option2)
             })
         })
 }
@@ -86,7 +92,6 @@ newItemForm.addEventListener("submit", function(e) {
     const inputItemPrice= document.querySelector("#new-item-price").value
     const isSpecialty = document.querySelector("#new-item-specialty-bool")
     const restId = document.querySelector("#new-item-belong-to-rest").value
-
     fetch(`http://localhost:3000/restaurants/${restId}/items`, {
         method: "POST",
         headers: {
@@ -104,6 +109,9 @@ newItemForm.addEventListener("submit", function(e) {
         return response.json()
     })
     .then(function(item){
+        document.querySelector("#new-item-name").value = ''
+        document.querySelector("#new-item-price").value = ''
+        document.querySelector("#new-item-specialty-bool").checked = false
             if (!listHidden(itemContainer)) {
                 const newItem = document.createElement('div')
                 newItem.className="item-container"
@@ -132,6 +140,8 @@ newItemForm.addEventListener("submit", function(e) {
                 newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
             }
+            renderRestaurants()
+
     })
 })
 

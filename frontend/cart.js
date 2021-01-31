@@ -66,8 +66,6 @@ function purchaseCart() {
         alert(`Cart is currently empty, please pick an item!`)
     } else {
         alert(`Thank you! You've purchased ${totalItems.innerText} items, totaling ${cartTotal.innerText}`)
-        // x = parseFloat(totalItems.innerText)
-        // updateItemTotal(x * -1)
         totalItems.innerText = "0"
         cartTotal.innerText = "$0.00"
         for (let i = cart.children.length; i > 0; i--) {
