@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  resources :items, only: [:destroy]
+
 end

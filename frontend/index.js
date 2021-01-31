@@ -148,8 +148,13 @@ newItemForm.addEventListener("submit", function(e) {
                 removeButton.addEventListener('click', function(event) {
                     event.preventDefault()  
                     let removeButton = event.target
+                    debugger
                     fetch(`http://localhost:3000/items/${item.data.id}`, {
                         method: "DELETE",
+                        headers: { 
+                            'Content-type': 'application/json',
+                            Accept: 'application/json'
+                        } 
                     })
                     .then(function(response) {
                         return response.json()
