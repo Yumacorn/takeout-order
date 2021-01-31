@@ -124,7 +124,6 @@ newItemForm.addEventListener("submit", function(e) {
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
-                    debugger
                 })
 
                 newItemAddCart.innerText = 'Add To Cart'
@@ -164,11 +163,11 @@ function renderItems() {
                 newItemAddCart.className="add-cart-item"
                 newItemAddCart.addEventListener('click', function(event) {
                     let addButton = event.target
-                    console.log(addButton.parentElement)
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
-                    // debugger
+                    alert(`Added (1) order of "${addItemToCart}"!`)
+                    addLineItem(addItemToCart, addItemPriceToCart, addItemRestIdToCart)
                 })
 
                 newItemAddCart.innerText = 'Add To Cart'
