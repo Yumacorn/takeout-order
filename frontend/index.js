@@ -8,20 +8,23 @@ const itemContainer = document.querySelector('#item-container')
 let selectedItemsRestId = document.querySelector('#display-items-belong-to-rest')
 
 function renderRestaurants() {
-    fetch('http://localhost:3000/restaurants')
-    .then(function(response){
-        return response.json()
-    })
-    .then(function(restaurants){
-        restaurantContainer.innerText = ''
-
-        restaurants.data.forEach(function(restaurant) {
-            const newRestaurant = document.createElement('p')
-            // debugger
-            newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
-            restaurantContainer.appendChild(newRestaurant)
+    // debugger
+    if (!listHidden(restaurantContainer)) {
+        fetch('http://localhost:3000/restaurants')
+        .then(function(response){
+            return response.json()
         })
-    })
+        .then(function(restaurants){
+            restaurantContainer.innerText = ''
+
+            restaurants.data.forEach(function(restaurant) {
+                const newRestaurant = document.createElement('p')
+                // debugger
+                newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
+                restaurantContainer.appendChild(newRestaurant)
+            })
+        })
+    }
 }
 
 newRestaurantForm.addEventListener("submit", function(e) {
@@ -125,6 +128,8 @@ newItemForm.addEventListener("submit", function(e) {
                 newItem.appendChild(newItemAddCart)
                 itemContainer.appendChild(newItem)
             }
+            console.log("victory")
+                renderRestaurants()
             console.log(item)
     })
 })
