@@ -27,13 +27,8 @@ function renderRestaurants() {
                 })
             }
             for (let i = selectedItemsRestId.options.length; i >= 0; i--) {
-                console.log(selectedItemsRestId.options)
-                console.log(`On ${i.value}`)
                 selectedItemsRestId.remove(i)
                 newItemRestId.remove(i)
-                console.log(`removed ${i}`)
-                // debugger
-
             }
             restaurants.data.forEach(function(restaurant) {
                 var option = document.createElement("option")
@@ -130,7 +125,6 @@ newItemForm.addEventListener("submit", function(e) {
 
                 newItemAddCart.addEventListener('click', function(event) {
                     let addButton = event.target
-                    console.log(addButton.parentElement)
                     addItemToCart = addButton.parentElement.children[0].innerText
                     addItemPriceToCart = addButton.parentElement.children[1].innerText.split(" ")[0]
                     addItemRestIdToCart = addButton.parentElement.children[1].innerText.split(" ")[4]
@@ -222,7 +216,6 @@ function renderItems() {
                 removeButton.addEventListener('click', function(event) {
                     event.preventDefault()  
                     let removeButton = event.target
-                    // debugger
                     fetch(`http://localhost:3000/items/${item.id}`, {
                         method: "DELETE",
                         headers: { 
@@ -235,8 +228,6 @@ function renderItems() {
                     })
                     .then(function(items){
                             removeButton.parentElement.remove()
-                            // renderRestaurants()
-                            // renderItems()
                     })
                 })
             })
@@ -245,7 +236,6 @@ function renderItems() {
 
 
 selectedItemsRestId.addEventListener("change", function(e) {
-    console.log('You selected: ', this.value);
     if (!listHidden(itemContainer)) {
         renderItems()
     }
@@ -257,7 +247,7 @@ itemListBtn.addEventListener("click", function(e) {
         itemContainer.className = ""
         renderItems()
     } else {
-        itemListBtn.innerHTML = "Show Item"
+        itemListBtn.innerHTML = "Show Items"
         itemContainer.className = "isHidden"
         itemContainer.innerText = ''
     }

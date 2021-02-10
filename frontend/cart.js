@@ -6,7 +6,7 @@ const totalItems = document.querySelector('#totalItems')
 const purchase = document.querySelector('#purchase')
 
 function addLineItem(item, price, restId) {
-    console.log(`"${item}" - ${price} - ${restId}`)
+    //build line item
     const newLineItem = document.createElement('div')
     const newLineItemName = document.createElement('span')
     newLineItemName.className = "order-item"
@@ -20,10 +20,11 @@ function addLineItem(item, price, restId) {
     const removeButton = document.createElement('button')
     removeButton.className = "remove-cart-item"
     removeButton.innerText = "X"
+
+    //create line item
     newLineItem.appendChild(removeButton)
     removeButton.addEventListener('click', function(event) {
         let removeButton = event.target
-        console.log(removeButton)    
         removePrice = -1 * parseFloat(price.split('$')[1])
         debugger
         updateCartTotal(removePrice)
@@ -34,6 +35,7 @@ function addLineItem(item, price, restId) {
     newLineItem.appendChild(newLineItemPrice)
     newLineItem.appendChild(newLineItemRestaurantId)
 
+    //add line item to cart
     cart.appendChild(newLineItem)
     updateCartTotal(price)
     updateItemTotal(1)
@@ -69,10 +71,7 @@ function purchaseCart() {
         totalItems.innerText = "0"
         cartTotal.innerText = "$0.00"
         for (let i = cart.children.length; i > 0; i--) {
-            console.log(cart.children)
-            console.log(`On ${i.value}`)
             cart.remove(i)
-            console.log(`removed ${i}`)
         }
     }
 }
