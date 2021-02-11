@@ -12,6 +12,8 @@ let newItemRestId = document.querySelector('#new-item-belong-to-rest')
 let removeItem = document.getElementsByClassName('remove-item')
 
 function renderRestaurants() {
+        let restaurantList = []
+
         fetch('http://localhost:3000/restaurants')
         .then(function(response){
             return response.json()
@@ -20,9 +22,24 @@ function renderRestaurants() {
             if (!listHidden(restaurantContainer)) {
                 restaurantContainer.innerText = ''
 
-                restaurants.data.forEach(function(restaurant) {
+                restaurantList = restaurants.data
+                restaurantList.sort(function(a,b) {
+                    let restaurantA = a.attributes.name
+                    let restaurantB = b.attributes.name
+                    if (restaurantA < restaurantB) {
+                        return -1
+                    }
+                    if (restaurantA > restaurantB) {
+                        return 1
+                    }
+                    return 0
+                })
+
+                restaurantList.forEach(function(restaurant) {
                     const newRestaurant = document.createElement('p')
-                    newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
+                    // newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
+                    // removed restaurant id as it's not user friendly
+                    newRestaurant.innerText = `${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
                     restaurantContainer.appendChild(newRestaurant)
                 })
             }

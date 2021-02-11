@@ -47,7 +47,7 @@ function updateCartTotal(adjPrice) {
     } else {
         x = adjPrice
     }
-    curTotal = parseFloat(cartTotal.innerHTML.split('$')[1])
+    let curTotal = parseFloat(cartTotal.innerHTML.split('$')[1])
     curTotal += x
     curTotal = curTotal.toFixed(2)
     cartTotal.innerHTML = `$${curTotal}`
