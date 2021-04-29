@@ -68,6 +68,10 @@ font-family: Verdana, Arial, sans-serif;
     background-color: rgb(0, 255, 229);
 }
 
+label {
+    font-weight: bold;
+}
+
 .item-container {
     border: solid 1px;
   float: left;

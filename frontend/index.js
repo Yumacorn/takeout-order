@@ -39,7 +39,7 @@ function renderRestaurants() {
                     const newRestaurant = document.createElement('p')
                     // newRestaurant.innerText = `${restaurant.id}. ${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
                     // removed restaurant id as it's not user friendly
-                    newRestaurant.innerText = `${restaurant.attributes.name} // Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} // Menu Items: ${restaurant.attributes.items.length}`
+                    newRestaurant.innerText = `${restaurant.attributes.name} | Fastfood Spot: ${restaurant.attributes.fastfood ? 'Yes':'No'} | Menu Items: ${restaurant.attributes.items.length}`
                     restaurantContainer.appendChild(newRestaurant)
                 })
             }

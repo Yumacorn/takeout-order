@@ -12,7 +12,7 @@ rest_c = Restaurant.create(name: "Billy's Burger Joint", fastfood: true)
 rest_d = Restaurant.create(name: "Aman's Aristan Bagels", fastfood: true)
 rest_e = Restaurant.create(name: "Adela's Fave Coffee Spot", fastfood: false)
 
-item_a = Item.create(name: "HazleCOffee", price: 12.0, specialty: true, restaurant_id: 5)
+item_a = Item.create(name: "Hazlenut Coffee", price: 12.0, specialty: true, restaurant_id: 5)
 item_b = Item.create(name: "Duck Bagel", price: 5.0, specialty: true, restaurant_id: 4)
 item_c = Item.create(name: "Walnut Shrimp with Honey Mayo Glaze", price: 12.99, specialty: true, restaurant_id: 1)
 item_d = Item.create(name: "Sushi Boat for 2", price: 32.49, specialty: true, restaurant_id: 2)
