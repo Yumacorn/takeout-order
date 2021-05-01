@@ -1,4 +1,4 @@
-# takeout-order
+# Takeout Order
 Allow families to create personalized takeout ordering experience by building a customized database of local restaurants where preferred restaurant and menu items could be saved for future orders
 
 Flatiron web development project to demonstrate front-end and back-end JS application which reflects working knowledge of full stack development
