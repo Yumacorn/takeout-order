@@ -16,3 +16,4 @@ Create the new restaurant file, add in your favorite items and pricing, and have
 Feel free to edit/create new restaurant/dishes as necessary!
 
 Any questions/comments/suggestions, feel free to reach out!
+Email: ReachRyanMui@gmail.com
